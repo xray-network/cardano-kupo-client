@@ -44,8 +44,8 @@ app()
 ## Endpoints
 
 * Check OpenAPI fetch documentations for available endpoint parameters: https://openapi-ts.pages.dev/openapi-fetch/
-* The client uses OpenAPI definitions from the Koios configuration: [nightly.yaml](https://cardanosolutions.github.io/kupo/api/nightly.yaml)
-* A complete list of endpoints can be found here (RapiDoc): https://api.koios.rest
+* The client uses OpenAPI definitions from the Kupo configuration: [nightly.yaml](https://cardanosolutions.github.io/kupo/api/nightly.yaml)
+* A complete list of endpoints can be found here (RapiDoc): https://cardanosolutions.github.io/kupo
 
 
 ## API URLs
