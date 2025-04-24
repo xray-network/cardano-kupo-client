@@ -1,33 +1,21 @@
 import { expect, test, vi } from "vitest"
-import KoiosTinyClient from "../src"
+import KupoClient from "../src"
 
-const baseUrl = "https://graph.xray.app/output/koios/mainnet/api/v1"
-const headers = {}
-const client = KoiosTinyClient(baseUrl, headers)
+const baseUrl = "https://graph.xray.app/output/kupo/mainnet/api/v1"
+const headers = {
+  // "Authorization": "Bearer YOUR_API_KEY", // XRAY/Graph API Key (paid subscription)
+  "Accept": "application/json",
+}
+const client = KupoClient(baseUrl, headers)
 
-test("/tip", async () => {
-  const tip = await client.GET("/tip")
-  expect(tip.data?.[0]).toHaveProperty("block_no")
+test("/health", async () => {
+  const health = await client.GET("/health")
+  expect(health.data).haveOwnProperty("most_recent_checkpoint")
 })
 
-test("/credential_txs", async () => {
-  const credential_txs = await client.POST("/credential_txs", {
-    body: { _payment_credentials: ["025b0a8f85cb8a46e1dda3fae5d22f07e2d56abb4019a2129c5d6c52"] },
+test("/scripts", async () => {
+  const scripts = await client.GET("/scripts/{script_hash}", {
+    params: { path: { script_hash: "bd2119ee2bfb8c8d7c427e8af3c35d537534281e09e23013bca5b138" } }
   })
-  expect(credential_txs.data?.[0]).toHaveProperty("tx_hash")
-})
-
-test("/credential_utxos", async () => {
-  const credential_utxos = await client.POST("/credential_utxos", {
-    body: { _payment_credentials: ["025b0a8f85cb8a46e1dda3fae5d22f07e2d56abb4019a2129c5d6c52"], _extended: true },
-  })
-  expect(credential_utxos.data?.[0]).toHaveProperty("value")
-})
-
-test("/submittx", async () => {
-  const submittx = await client.POST("/submittx", {
-    body: "84a40081825820c8da3848010af1728d19555c9864dd4ace97ad56972b6bb352bbdc0f8ffb0d5200018282581d617a6a5ccbaf3e6308d8c09ccfa45b34cc7cccaa242dc2dc05ba2a72201a00d2eee782583901d07f6a9dc8cba4b368d04225c4cd36ce21b1800bc54e7924e65689d9ddbe7a587e6bdd2674bf53fc093226bbd43af035f4ea07d7811679661b000000037d3c3680021a0002b099031a047d9ea2a0f5f6",
-    headers: { "Content-Type": "application/cbor" },
-  })
-  expect(submittx.error).exist
+  expect(scripts.data).haveOwnProperty("script")
 })
