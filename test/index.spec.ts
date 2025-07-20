@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest"
 import KupoClient from "../src"
 
-const baseUrl = "https://graph.xray.app/output/kupo/mainnet/api/v1"
+const baseUrl = "https://graph.xray.app/output/services/kupo/mainnet/api/v1"
 const headers = {
   // "Authorization": "Bearer YOUR_API_KEY", // XRAY/Graph API Key (paid subscription)
   "Accept": "application/json",

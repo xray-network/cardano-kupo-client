@@ -25,7 +25,7 @@ npm i cardano-kupo-client
 ```TypeScript
 import KupoClient from "cardano-kupo-client"
 
-const client = KupoClient("https://graph.xray.app/output/kupo/mainnet/api/v1")
+const client = KupoClient("https://graph.xray.app/output/services/kupo/mainnet/api/v1")
 
 const app = async () => {
   const health = await client.GET("/health")
@@ -53,13 +53,13 @@ app()
 Managed by XRAY/Network (XRAY/Graph, Cloudflare WAF & Load Balancer), requires paid subscription
 
 ```
-https://graph.xray.app/output/kupo/mainnet/api/v1
+https://graph.xray.app/output/services/kupo/mainnet/api/v1
 ```
 
 ```
-https://graph.xray.app/output/kupo/preprod/api/v1
+https://graph.xray.app/output/services/kupo/preprod/api/v1
 ```
 
 ```
-https://graph.xray.app/output/kupo/preview/api/v1
+https://graph.xray.app/output/services/kupo/preview/api/v1
 ```
