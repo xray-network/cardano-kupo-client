@@ -43,6 +43,28 @@ app()
 
 ## Advanced Usage
 
+<summary>Headers</summary>
+  
+``` TypeScript
+import KupoClient from "cardano-kupo-client"
+
+const baseUrl = "https://graph.xray.app/output/services/kupo/mainnet/api/v1"
+const headers = {} // rest headers
+const client = KupoClient(baseUrl, headers)
+
+const app = async () => {
+  const health = await client.GET("/health", {
+    headers: { "Content-Type": "application/json" }, // one shot headers
+  })
+
+  console.log(health.data)
+}
+
+app()
+```
+
+</details>
+
 <details>
 <summary>Request Cancellation (AbortSignal)</summary>
 
