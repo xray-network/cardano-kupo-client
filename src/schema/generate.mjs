@@ -4,7 +4,7 @@ import openapiTS, { astToString } from "openapi-typescript"
 const run = async () => {
   const schema = (await openapiTS(
     new URL(
-      "https://cardanosolutions.github.io/kupo/api/nightly.yaml"
+      "https://graph.xray.app/output/services/kupo/mainnet/api/v1/openapi.json",
     ),
     {
       exportType: true,

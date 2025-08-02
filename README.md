@@ -4,7 +4,7 @@
   
 # TypeScript Client for Kupo blockchain indexer
 
-Automatically generated Openapi-fetch client for [Kupo](https://cardanosolutions.github.io/kupo/) based on [schema.yaml](https://cardanosolutions.github.io/kupo/api/nightly.yaml) OpenAPI schema.
+Automatically generated Openapi-fetch client for Kupo.
 
 ## Installation
 
@@ -41,11 +41,54 @@ const app = async () => {
 app()
 ```
 
-## Endpoints
+## Advanced Usage
 
-* Check OpenAPI fetch documentations for available endpoint parameters: https://openapi-ts.pages.dev/openapi-fetch/
-* The client uses OpenAPI definitions from the Kupo configuration: [nightly.yaml](https://cardanosolutions.github.io/kupo/api/nightly.yaml)
-* A complete list of endpoints can be found here (RapiDoc): https://cardanosolutions.github.io/kupo
+<details>
+<summary>Request Cancellation (AbortSignal)</summary>
+
+```TypeScript
+import KupoClient from "cardano-kupo-client"
+
+const client = KupoClient("https://graph.xray.app/output/services/kupo/mainnet/api/v1")
+
+const app = async () => {
+  const abortController = new AbortController()
+
+  setTimeout(() => {
+    abortController.abort() // cancel request
+    console.log('Aborted!')
+  }, 200)
+
+  const assets = await client.GET("/assets", {
+    signal: abortController.signal,
+  })
+
+  if (assets.data) {
+    console.log(tip.data?.[0]?.block_no)
+  }
+  if (assets.error) {
+    console.error(tip.error)
+  }
+}
+
+app()
+```
+
+</details>
+
+<details>
+<summary>Updating Schema</summary>
+
+Run schema update:
+```console
+yarn schema
+```
+
+</details>
+
+## Playground
+
+* XRAY/Graph Kupo — https://graph.xray.app/output/services/kupo/mainnet/api/v1/
 
 
 ## API URLs
