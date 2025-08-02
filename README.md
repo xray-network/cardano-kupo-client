@@ -43,6 +43,7 @@ app()
 
 ## Advanced Usage
 
+<details>
 <summary>Headers</summary>
   
 ``` TypeScript
