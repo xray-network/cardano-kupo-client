@@ -11,7 +11,7 @@ Automatically generated Openapi-fetch client for Kupo.
 To install the client with Yarn, run:
 
 ```TypeScript
-yarn install cardano-kupo-client
+yarn add cardano-kupo-client
 ```
 
 To install the client with NPM, run:
@@ -59,16 +59,9 @@ const app = async () => {
     console.log('Aborted!')
   }, 200)
 
-  const assets = await client.GET("/assets", {
+  const assets = await client.GET("/health", {
     signal: abortController.signal,
   })
-
-  if (assets.data) {
-    console.log(tip.data?.[0]?.block_no)
-  }
-  if (assets.error) {
-    console.error(tip.error)
-  }
 }
 
 app()
